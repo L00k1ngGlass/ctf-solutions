@@ -1,6 +1,15 @@
 # Solution
 
 The answer is located on packet #9968. The data contains the hashes of several users.
+The easiest way to find the related hashes is to use Wireshark and use filters.
+In this case we're searching for 'leia' as any instance of string within the packets. We can do this by opening the file in Wireshark and adding
+the following filter:
+
+```
+frame contains 'leia'
+```
+
+Packet #9968 will contains the hashes of several users. We only need Leia's creds. 
 
 Leia's will look like this:
 
@@ -15,7 +24,9 @@ leia:1012
 
 We get two pieces from this, the NT and LM hash:
 
-- **NT:** `088870ba8ea71662aad3b435b51404ee`
-- **LM:** `4619c592fda516c8140495d2fbf707fc`
+- **LM:** `088870ba8ea71662aad3b435b51404ee`
+- **NT:** `4619c592fda516c8140495d2fbf707fc`
 
 From here we can use an online tool, use hashcat with a wordlist, or use a python script with a wordlist.
+
+ntlm.pw is the easiest tool to use! 
